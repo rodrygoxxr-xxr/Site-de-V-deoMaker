@@ -123,7 +123,7 @@ function Index() {
   `;
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-[#faf9f7]" style={{ fontFamily: "'Inter', sans-serif" }}>
+    <div className="min-h-screen bg-[#0a0a0a] text-[#faf9f7] overflow-x-hidden" style={{ fontFamily: "'Inter', sans-serif" }}>
       {/* Header */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -143,16 +143,17 @@ function Index() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-xs tracking-[0.15em] text-[#ccc] hover:text-[#faf9f7] transition-colors duration-300"
+                  className="text-xs tracking-[0.15em] text-[#ccc] hover:text-[#faf9f7] transition-all duration-300 relative group"
                 >
                   {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#faf9f7] transition-all duration-300 group-hover:w-full"></span>
                 </button>
               ))}
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-2 text-xs tracking-[0.1em] border border-[#333] text-[#faf9f7] hover:bg-[#faf9f7] hover:text-[#0a0a0a] transition-all duration-300"
+                className="btn-scale px-5 py-2 text-xs tracking-[0.1em] border border-[#333] text-[#faf9f7] hover:bg-[#faf9f7] hover:text-[#0a0a0a] hover:border-[#faf9f7]"
               >
                 Solicitar orçamento
               </a>
@@ -206,25 +207,25 @@ function Index() {
           </div>
         </div>
         <div className="relative z-10 text-center px-6 max-w-4xl">
-          <div className="mb-8">
+          <div className="mb-8 animate-fadeIn">
             <span className="text-xs tracking-[0.4em] text-[#888] block mb-3">VIDEOMAKER MOBILE & STORYMAKER</span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-light tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
               Ana Karoline
             </h1>
           </div>
           <p 
-            className="text-xl md:text-2xl lg:text-3xl text-[#faf9f7] mb-6 leading-relaxed"
+            className="text-xl md:text-2xl lg:text-3xl text-[#faf9f7] mb-6 leading-relaxed animate-fadeIn"
             style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
           >
             Vídeos que eternizam momentos e fortalecem marcas.
           </p>
-          <p className="text-sm text-[#888] mb-12 max-w-lg mx-auto leading-relaxed">
+          <p className="text-sm text-[#888] mb-12 max-w-lg mx-auto leading-relaxed animate-fadeIn">
             Histórias reais, momentos únicos e conteúdos que merecem ser lembrados.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fadeIn">
             <button
               onClick={() => scrollToSection("portfolio")}
-              className="px-8 py-4 text-xs tracking-[0.15em] bg-[#faf9f7] text-[#0a0a0a] hover:bg-[#e0e0e0] transition-all duration-300"
+              className="btn-scale px-8 py-4 text-xs tracking-[0.15em] bg-[#faf9f7] text-[#0a0a0a] hover:bg-[#e0e0e0]"
             >
               Ver portfólio
             </button>
@@ -232,7 +233,7 @@ function Index() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-8 py-4 text-xs tracking-[0.15em] border border-[#faf9f7] text-[#faf9f7] hover:bg-[#faf9f7] hover:text-[#0a0a0a] transition-all duration-300"
+              className="btn-scale px-8 py-4 text-xs tracking-[0.15em] border border-[#faf9f7] text-[#faf9f7] hover:bg-[#faf9f7] hover:text-[#0a0a0a]"
             >
               Solicitar orçamento
             </a>
@@ -240,11 +241,11 @@ function Index() {
         </div>
         <button
           onClick={() => scrollToSection("sobre")}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#666] hover:text-[#faf9f7] transition-colors"
+          className="scroll-indicator absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#666] hover:text-[#faf9f7] transition-colors cursor-pointer"
           aria-label="Scroll down"
         >
           <span className="text-[10px] tracking-[0.2em]">SCROLL</span>
-          <ChevronDown size={20} className="animate-bounce" />
+          <ChevronDown size={20} />
         </button>
       </section>
 
@@ -263,15 +264,19 @@ function Index() {
               <p className="text-[#aaa] text-base leading-relaxed max-w-xl">
                 Meu trabalho é transformar momentos, experiências e ideias em vídeos que despertam sentimentos e permanecem na memória. Seja registrando um momento especial ou criando conteúdo para uma marca, cada produção é pensada para contar uma história de forma autêntica e visualmente marcante.
               </p>
-              <div className="flex gap-3 mt-8">
-                <span className="px-3 py-1 text-[10px] tracking-[0.15em] border border-[#333] text-[#888]">Eventos</span>
-                <span className="px-3 py-1 text-[10px] tracking-[0.15em] border border-[#333] text-[#888]">Empresas</span>
-                <span className="px-3 py-1 text-[10px] tracking-[0.15em] border border-[#333] text-[#888]">Pré-Wedding</span>
-                <span className="px-3 py-1 text-[10px] tracking-[0.15em] border border-[#333] text-[#888]">Stories</span>
+              <div className="flex flex-wrap gap-3 mt-8">
+                {['Eventos', 'Empresas', 'Pré-Wedding', 'Stories'].map((tag) => (
+                  <span 
+                    key={tag}
+                    className="px-3 py-1 text-[10px] tracking-[0.15em] border border-[#333] text-[#888] transition-all duration-300 hover:border-[#666] hover:text-[#aaa]"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </div>
             <div className="lg:col-span-5">
-              <div className="aspect-[3/4] bg-[#111] flex items-center justify-center border border-[#1a1a1a]">
+              <div className="aspect-[3/4] bg-[#111] flex items-center justify-center border border-[#1a1a1a] card-hover">
                 <span className="text-[#333] text-xs tracking-[0.2em]">FOTO DA ANA</span>
               </div>
             </div>
@@ -291,13 +296,13 @@ function Index() {
               O que eu faço
             </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-px bg-[#1a1a1a]">
+                        <div className="grid md:grid-cols-2 gap-px bg-[#1a1a1a]">
             {services.map((service, index) => (
               <div
                 key={index}
-                className="bg-[#080808] p-10 lg:p-14 group hover:bg-[#0f0f0f] transition-all duration-500"
+                className="service-card bg-[#080808] p-10 lg:p-14 group cursor-pointer"
               >
-                <span className="text-[10px] tracking-[0.3em] text-[#444] block mb-6 group-hover:text-[#666] transition-colors">
+                <span className="text-[10px] tracking-[0.3em] text-[#444] block mb-6 group-hover:text-[#666] transition-colors duration-300">
                   0{index + 1}
                 </span>
                 <h3 
@@ -306,7 +311,7 @@ function Index() {
                 >
                   {service.title}
                 </h3>
-                <p className="text-[#777] text-sm leading-relaxed group-hover:text-[#999] transition-colors">
+                <p className="text-[#777] text-sm leading-relaxed group-hover:text-[#999] transition-colors duration-300">
                   {service.description}
                 </p>
               </div>
@@ -341,10 +346,10 @@ function Index() {
               <button
                 key={filter.id}
                 onClick={() => setActiveFilter(filter.id)}
-                className={`px-4 py-2 text-xs tracking-[0.1em] transition-all duration-300 ${
+                className={`btn-scale px-4 py-2 text-xs tracking-[0.1em] transition-all duration-300 ${
                   activeFilter === filter.id
                     ? "bg-[#faf9f7] text-[#0a0a0a]"
-                    : "border border-[#333] text-[#888] hover:border-[#555]"
+                    : "border border-[#333] text-[#888] hover:border-[#555] hover:text-[#aaa]"
                 }`}
               >
                 {filter.label}
@@ -354,17 +359,18 @@ function Index() {
 
           {/* Portfolio Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredPortfolio.map((item) => (
+            {filteredPortfolio.map((item, idx) => (
               <div
                 key={item.id}
-                className="group relative aspect-[9/16] bg-[#111] cursor-pointer overflow-hidden"
+                className="portfolio-item group relative aspect-[9/16] bg-[#111] cursor-pointer overflow-hidden"
+                style={{ animationDelay: `${idx * 100}ms` }}
               >
                 <div className="absolute inset-0 bg-[#0a0a0a]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
                   <div className="text-center p-6">
-                    <div className="w-12 h-12 rounded-full border border-[#faf9f7] flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                      <Play size={16} fill="#faf9f7" />
+                    <div className="w-14 h-14 rounded-full border border-[#faf9f7] flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <Play size={18} fill="#faf9f7" />
                     </div>
-                    <h4 className="text-sm mb-1" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    <h4 className="text-sm mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
                       {item.title}
                     </h4>
                     <span className="text-[10px] tracking-[0.15em] text-[#888] uppercase">{item.category}</span>
@@ -418,17 +424,17 @@ function Index() {
           <div className="grid md:grid-cols-4 gap-8 relative">
             <div className="hidden md:block absolute top-12 left-[12.5%] right-[12.5%] h-px bg-[#1a1a1a]" />
             {processSteps.map((step, index) => (
-              <div key={index} className="text-center relative">
-                <div className="w-6 h-6 bg-[#0a0a0a] border border-[#333] rounded-full mx-auto mb-8 relative z-10 flex items-center justify-center">
-                  <span className="text-[10px] text-[#666]">{step.number}</span>
+              <div key={index} className="text-center relative group">
+                <div className="w-8 h-8 bg-[#0a0a0a] border border-[#333] rounded-full mx-auto mb-8 relative z-10 flex items-center justify-center transition-all duration-300 group-hover:border-[#faf9f7] group-hover:bg-[#1a1a1a]">
+                  <span className="text-[10px] text-[#666] transition-colors duration-300 group-hover:text-[#faf9f7]">{step.number}</span>
                 </div>
                 <h3 
-                  className="text-lg mb-4"
+                  className="text-lg mb-4 transition-colors duration-300 group-hover:text-[#faf9f7]"
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
                   {step.title}
                 </h3>
-                <p className="text-[#666] text-sm leading-relaxed">
+                <p className="text-[#666] text-sm leading-relaxed transition-colors duration-300 group-hover:text-[#888]">
                   {step.description}
                 </p>
               </div>
@@ -491,11 +497,11 @@ function Index() {
             href={whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-5 bg-[#faf9f7] text-[#0a0a0a] text-xs tracking-[0.15em] hover:bg-[#e0e0e0] transition-all duration-300 group"
+            className="btn-scale inline-flex items-center gap-3 px-10 py-5 bg-[#faf9f7] text-[#0a0a0a] text-xs tracking-[0.15em] hover:bg-[#e0e0e0] group"
           >
             <MessageCircle size={18} />
             Solicitar orçamento pelo WhatsApp
-            <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />
           </a>
         </div>
       </section>
@@ -521,7 +527,7 @@ function Index() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-[#333] text-[#faf9f7] hover:bg-[#faf9f7] hover:text-[#0a0a0a] transition-all duration-300"
+                className="btn-scale inline-flex items-center gap-2 px-6 py-3 border border-[#333] text-[#faf9f7] hover:bg-[#faf9f7] hover:text-[#0a0a0a] hover:border-[#faf9f7]"
               >
                 <MessageCircle size={16} />
                 WhatsApp
@@ -530,7 +536,7 @@ function Index() {
                 href={instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-[#333] text-[#faf9f7] hover:bg-[#faf9f7] hover:text-[#0a0a0a] transition-all duration-300"
+                className="btn-scale inline-flex items-center gap-2 px-6 py-3 border border-[#333] text-[#faf9f7] hover:bg-[#faf9f7] hover:text-[#0a0a0a] hover:border-[#faf9f7]"
               >
                 <Instagram size={16} />
                 @anakfilms_
@@ -539,6 +545,19 @@ function Index() {
           </div>
         </div>
       </section>
+
+      {/* Floating WhatsApp Button */}
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="whatsapp-bounce fixed bottom-8 right-8 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl"
+        aria-label="Contato via WhatsApp"
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
 
       {/* Footer */}
       <footer className="py-16 px-6 lg:px-12 border-t border-[#111]">
@@ -555,10 +574,22 @@ function Index() {
               </p>
             </div>
             <nav className="flex flex-wrap justify-center gap-8">
-              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-xs tracking-[0.1em] text-[#666] hover:text-[#faf9f7] transition-colors">Instagram</a>
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-xs tracking-[0.1em] text-[#666] hover:text-[#faf9f7] transition-colors">WhatsApp</a>
-              <button onClick={() => scrollToSection("portfolio")} className="text-xs tracking-[0.1em] text-[#666] hover:text-[#faf9f7] transition-colors">Portfólio</button>
-              <button onClick={() => scrollToSection("contato")} className="text-xs tracking-[0.1em] text-[#666] hover:text-[#faf9f7] transition-colors">Contato</button>
+              <a href={instagramUrl} target="_blank" rel="noopener noreferrer" className="text-xs tracking-[0.1em] text-[#666] hover:text-[#faf9f7] transition-all duration-300 relative group">
+                Instagram
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#faf9f7] transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="text-xs tracking-[0.1em] text-[#666] hover:text-[#faf9f7] transition-all duration-300 relative group">
+                WhatsApp
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#faf9f7] transition-all duration-300 group-hover:w-full"></span>
+              </a>
+              <button onClick={() => scrollToSection("portfolio")} className="text-xs tracking-[0.1em] text-[#666] hover:text-[#faf9f7] transition-all duration-300 relative group">
+                Portfólio
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#faf9f7] transition-all duration-300 group-hover:w-full"></span>
+              </button>
+              <button onClick={() => scrollToSection("contato")} className="text-xs tracking-[0.1em] text-[#666] hover:text-[#faf9f7] transition-all duration-300 relative group">
+                Contato
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#faf9f7] transition-all duration-300 group-hover:w-full"></span>
+              </button>
             </nav>
           </div>
           <div className="mt-12 pt-8 border-t border-[#111] text-center">
