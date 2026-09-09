@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, Play, ArrowRight, Instagram, MessageCircle, Star, Quote } from "lucide-react";
+import anaKarolineAsset from "@/assets/ana-karoline.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -276,8 +277,13 @@ function Index() {
               </div>
             </div>
             <div className="lg:col-span-5">
-              <div className="aspect-[3/4] bg-[#111] flex items-center justify-center border border-[#1a1a1a] card-hover">
-                <span className="text-[#333] text-xs tracking-[0.2em]">FOTO DA ANA</span>
+              <div className="aspect-[3/4] bg-[#111] overflow-hidden border border-[#1a1a1a] card-hover">
+                <img
+                  src={anaKarolineAsset.url}
+                  alt="Ana Karoline, social media e videomaker mobile, segurando um celular"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
@@ -460,10 +466,10 @@ function Index() {
               className="text-xl md:text-2xl leading-relaxed mb-8 animate-fadeIn"
               style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
             >
-              {testimonials[activeTestimonial].text}
+              {testimonials[activeTestimonial]?.text}
             </p>
             <p className="text-[#666] text-sm tracking-[0.1em]">
-              — {testimonials[activeTestimonial].author}
+              — {testimonials[activeTestimonial]?.author}
             </p>
             <div className="flex justify-center gap-2 mt-8">
               {testimonials.map((_, index) => (
