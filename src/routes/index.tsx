@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown, Play, ArrowRight, Instagram, MessageCircle, Star, Quote } from "lucide-react";
+import anaKarolineAsset from "@/assets/ana-karoline.png.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
