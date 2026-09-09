@@ -276,8 +276,13 @@ function Index() {
               </div>
             </div>
             <div className="lg:col-span-5">
-              <div className="aspect-[3/4] bg-[#111] flex items-center justify-center border border-[#1a1a1a] card-hover">
-                <span className="text-[#333] text-xs tracking-[0.2em]">FOTO DA ANA</span>
+              <div className="aspect-[3/4] bg-[#111] overflow-hidden border border-[#1a1a1a] card-hover">
+                <img
+                  src={anaKarolineAsset.url}
+                  alt="Ana Karoline, social media e videomaker mobile, segurando um celular"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>
