@@ -466,10 +466,10 @@ function Index() {
               className="text-xl md:text-2xl leading-relaxed mb-8 animate-fadeIn"
               style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
             >
-              {testimonials[activeTestimonial].text}
+              {testimonials[activeTestimonial]?.text}
             </p>
             <p className="text-[#666] text-sm tracking-[0.1em]">
-              — {testimonials[activeTestimonial].author}
+              — {testimonials[activeTestimonial]?.author}
             </p>
             <div className="flex justify-center gap-2 mt-8">
               {testimonials.map((_, index) => (
