@@ -121,8 +121,10 @@ function RootShell({ children }: { children: ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body className="antialiased">
-        {children}
+      <body id="app-body" className="antialiased">
+        <div id="app-root" className="min-h-screen">
+          {children}
+        </div>
         <Scripts />
       </body>
     </html>
@@ -134,7 +136,9 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <main id="main-content" data-page-content>
+        <Outlet />
+      </main>
     </QueryClientProvider>
   );
 }
