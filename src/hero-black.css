@@ -1,0 +1,13 @@
+/* Hero inicial: fundo preto sólido atrás de todo o conteúdo principal. */
+#hero {
+  background: #000 !important;
+}
+
+#hero > div:first-child {
+  background: #000 !important;
+}
+
+/* Remove o placeholder visual do fundo para manter a abertura limpa e minimalista. */
+#hero > div:nth-child(2) {
+  display: none !important;
+}
