@@ -90,8 +90,8 @@ function Index() {
     { id: 6, category: "empresas", title: "Lançamento Produto Tech", description: "Campanha digital" },
   ];
 
-  const filteredPortfolio = activeFilter === "todos" 
-    ? portfolioItems 
+  const filteredPortfolio = activeFilter === "todos"
+    ? portfolioItems
     : portfolioItems.filter(item => item.category === activeFilter);
 
   const differentials = ["Olhar", "Sensibilidade", "Narrativa", "Detalhes", "Emoção", "Experiência"];
@@ -226,7 +226,7 @@ function Index() {
               Ana Karoline
             </h1>
           </div>
-          <p 
+          <p
             className="text-xl md:text-2xl lg:text-3xl text-[#faf9f7] mb-6 leading-relaxed animate-fadeIn"
             style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
           >
@@ -254,10 +254,9 @@ function Index() {
         </div>
         <button
           onClick={() => scrollToSection("sobre")}
-          className="scroll-indicator absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-[#666] hover:text-[#faf9f7] transition-colors cursor-pointer"
-          aria-label="Scroll down"
+          className="scroll-indicator absolute bottom-12 left-1/2 -translate-x-1/2 text-[#666] hover:text-[#faf9f7] transition-colors cursor-pointer"
+          aria-label="Rolar para a seção Sobre"
         >
-          <span className="text-[10px] tracking-[0.2em]">SCROLL</span>
           <ChevronDown size={20} />
         </button>
       </section>
@@ -268,7 +267,7 @@ function Index() {
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-7">
               <span className="text-[10px] tracking-[0.3em] text-[#666] block mb-6">SOBRE</span>
-              <h2 
+              <h2
                 className="text-3xl md:text-4xl lg:text-5xl leading-tight mb-10"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
@@ -279,7 +278,7 @@ function Index() {
               </p>
               <div className="flex flex-wrap gap-3 mt-8">
                 {['Eventos', 'Empresas', 'Pré-Wedding', 'Stories'].map((tag) => (
-                  <span 
+                  <span
                     key={tag}
                     className="px-3 py-1 text-[10px] tracking-[0.15em] border border-[#333] text-[#888] transition-all duration-300 hover:border-[#666] hover:text-[#aaa]"
                   >
@@ -307,7 +306,7 @@ function Index() {
         <div className={`max-w-6xl mx-auto ${sectionClass("servicos")}`}>
           <div className="text-center mb-20">
             <span className="text-[10px] tracking-[0.3em] text-[#666] block mb-6">SERVIÇOS</span>
-            <h2 
+            <h2
               className="text-3xl md:text-4xl lg:text-5xl"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
@@ -323,7 +322,7 @@ function Index() {
                 <span className="text-[10px] tracking-[0.3em] text-[#444] block mb-6 group-hover:text-[#666] transition-colors duration-300">
                   0{index + 1}
                 </span>
-                <h3 
+                <h3
                   className="text-2xl lg:text-3xl mb-6 group-hover:translate-x-2 transition-transform duration-300"
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
@@ -343,7 +342,7 @@ function Index() {
         <div className={`max-w-7xl mx-auto ${sectionClass("portfolio")}`}>
           <div className="text-center mb-16">
             <span className="text-[10px] tracking-[0.3em] text-[#666] block mb-6">PORTFÓLIO</span>
-            <h2 
+            <h2
               className="text-3xl md:text-4xl lg:text-5xl mb-4"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
@@ -407,7 +406,7 @@ function Index() {
       <section className="py-32 px-6 lg:px-12 bg-[#080808]">
         <div className={`max-w-5xl mx-auto text-center ${sectionClass("differential")}`}>
           <span className="text-[10px] tracking-[0.3em] text-[#666] block mb-6">DIFERENCIAL</span>
-          <h2 
+          <h2
             className="text-3xl md:text-4xl lg:text-5xl mb-20"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
@@ -432,7 +431,7 @@ function Index() {
         <div className={`max-w-6xl mx-auto ${sectionClass("processo")}`}>
           <div className="text-center mb-20">
             <span className="text-[10px] tracking-[0.3em] text-[#666] block mb-6">PROCESSO</span>
-            <h2 
+            <h2
               className="text-3xl md:text-4xl lg:text-5xl"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
@@ -446,7 +445,7 @@ function Index() {
                 <div className="w-8 h-8 bg-[#0a0a0a] border border-[#333] rounded-full mx-auto mb-8 relative z-10 flex items-center justify-center transition-all duration-300 group-hover:border-[#faf9f7] group-hover:bg-[#1a1a1a]">
                   <span className="text-[10px] text-[#666] transition-colors duration-300 group-hover:text-[#faf9f7]">{step.number}</span>
                 </div>
-                <h3 
+                <h3
                   className="text-lg mb-4 transition-colors duration-300 group-hover:text-[#faf9f7]"
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
@@ -465,7 +464,7 @@ function Index() {
       <section className="py-32 px-6 lg:px-12 bg-[#080808]">
         <div className={`max-w-3xl mx-auto text-center ${sectionClass("depoimentos")}`}>
           <span className="text-[10px] tracking-[0.3em] text-[#666] block mb-6">DEPOIMENTOS</span>
-          <h2 
+          <h2
             className="text-3xl md:text-4xl lg:text-5xl mb-16"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
@@ -473,7 +472,7 @@ function Index() {
           </h2>
           <div className="relative min-h-[200px]">
             <Quote className="w-8 h-8 text-[#222] mx-auto mb-8" />
-            <p 
+            <p
               key={activeTestimonial}
               className="text-xl md:text-2xl leading-relaxed mb-8 animate-fadeIn"
               style={{ fontFamily: "'Playfair Display', serif", fontStyle: "italic" }}
@@ -502,7 +501,7 @@ function Index() {
       {/* CTA Section */}
       <section className="py-40 px-6 lg:px-12">
         <div className={`max-w-3xl mx-auto text-center ${sectionClass("cta")}`}>
-          <h2 
+          <h2
             className="text-3xl md:text-4xl lg:text-5xl mb-6"
             style={{ fontFamily: "'Playfair Display', serif" }}
           >
@@ -529,7 +528,7 @@ function Index() {
         <div className={`max-w-4xl mx-auto ${sectionClass("contato")}`}>
           <div className="text-center mb-16">
             <span className="text-[10px] tracking-[0.3em] text-[#666] block mb-6">CONTATO</span>
-            <h2 
+            <h2
               className="text-3xl md:text-4xl lg:text-5xl mb-4"
               style={{ fontFamily: "'Playfair Display', serif" }}
             >
@@ -584,7 +583,7 @@ function Index() {
             <div className="text-center lg:text-left">
               <span className="text-sm tracking-[0.3em] block mb-1">ANA KAROLINE</span>
               <span className="text-[10px] tracking-[0.15em] text-[#444] block mb-3">VIDEOMAKER MOBILE & STORYMAKER</span>
-              <p 
+              <p
                 className="text-sm text-[#666] italic"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
