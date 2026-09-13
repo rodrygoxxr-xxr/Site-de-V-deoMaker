@@ -1,6 +1,7 @@
 /* Hero inicial: fundo preto sólido atrás de todo o conteúdo principal. */
 #hero {
   background: #000 !important;
+  color: #fff !important;
 }
 
 #hero > div:first-child {
@@ -10,4 +11,101 @@
 /* Remove o placeholder visual do fundo para manter a abertura limpa e minimalista. */
 #hero > div:nth-child(2) {
   display: none !important;
+}
+
+/* Paleta editorial do site: preto profundo + branco. */
+#servicos {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+#sobre,
+#portfolio,
+#contato {
+  background: #fff !important;
+  color: #0a0a0a !important;
+}
+
+/* Ajusta automaticamente a tipografia das seções claras. */
+#sobre h1,
+#sobre h2,
+#sobre h3,
+#portfolio h1,
+#portfolio h2,
+#portfolio h3,
+#contato h1,
+#contato h2,
+#contato h3 {
+  color: #0a0a0a !important;
+}
+
+#sobre p,
+#portfolio p,
+#contato p {
+  color: #555 !important;
+}
+
+#sobre [class*="text-[#faf9f7]"],
+#portfolio [class*="text-[#faf9f7]"],
+#contato [class*="text-[#faf9f7]"] {
+  color: #0a0a0a !important;
+}
+
+#sobre [class*="text-[#aaa]"],
+#portfolio [class*="text-[#aaa]"],
+#contato [class*="text-[#aaa]"] {
+  color: #555 !important;
+}
+
+#sobre [class*="text-[#888]"],
+#portfolio [class*="text-[#888]"],
+#contato [class*="text-[#888]"] {
+  color: #666 !important;
+}
+
+/* Cards e divisórias ficam claros e discretos nas seções brancas. */
+#sobre [class*="bg-[#111]"],
+#portfolio [class*="bg-[#111]"],
+#contato [class*="bg-[#111]"] {
+  background: #f7f7f7 !important;
+}
+
+#sobre [class*="border-[#333]"],
+#portfolio [class*="border-[#333]"],
+#contato [class*="border-[#333]"] {
+  border-color: #e2e2e2 !important;
+}
+
+/* CTAs nas áreas claras usam preto com texto branco para manter contraste. */
+#sobre [class*="bg-[#faf9f7]"],
+#portfolio [class*="bg-[#faf9f7]"],
+#contato [class*="bg-[#faf9f7]"] {
+  background: #0a0a0a !important;
+  color: #fff !important;
+}
+
+/* Inputs e campos de formulário nas áreas claras. */
+#contato input,
+#contato textarea {
+  background: #f7f7f7 !important;
+  color: #0a0a0a !important;
+  border-color: #d8d8d8 !important;
+}
+
+#contato input::placeholder,
+#contato textarea::placeholder {
+  color: #777 !important;
+}
+
+/* Mantém links e elementos interativos legíveis sobre branco. */
+#sobre a,
+#portfolio a,
+#contato a {
+  color: #0a0a0a;
+}
+
+#sobre button,
+#portfolio button,
+#contato button {
+  border-color: #0a0a0a;
 }
