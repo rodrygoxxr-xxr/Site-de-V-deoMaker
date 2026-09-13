@@ -247,3 +247,8 @@ button, a {
 .scroll-indicator {
   animation: scrollPulse 2s ease-in-out infinite;
 }
+
+/* Botão flutuante do Instagram: mesmo formato circular do WhatsApp */
+a[aria-label="Abrir Instagram @anakfilms_"] {
+  border-radius: 9999px !important;
+}
