@@ -8,7 +8,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 const mobileMenuStabilityFix = {
   name: "mobile-menu-stability-fix",
-  enforce: "post" as const,
+  enforce: "pre" as const,
   transform(code: string, id: string) {
     if (!id.replaceAll("\\", "/").endsWith("/src/routes/index.tsx")) {
       return null;
