@@ -191,7 +191,7 @@
     width: 100% !important;
     height: 100% !important;
     box-sizing: border-box !important;
-    padding: 5.5rem 1.5rem 2rem !important;
+    padding: 5.5rem 1.5rem 7rem !important;
     gap: 0 !important;
     overflow-y: auto !important;
     overscroll-behavior: contain !important;
@@ -220,5 +220,33 @@
     border-color: #444 !important;
     border-radius: 0 !important;
     text-align: center !important;
+  }
+
+  /*
+   * Ao abrir o menu, os dois botões sociais que normalmente ficam
+   * flutuando na lateral passam para o rodapé do próprio menu.
+   * Eles continuam sendo os mesmos links funcionais de Instagram e WhatsApp.
+   * O drawer permanece acima dos elementos da página e o X continua no topo.
+   */
+  body:has(header > div[class*="fixed top-0 right-0"][aria-hidden="false"]) a[aria-label="Abrir Instagram @anakfilms_"],
+  body:has(header > div[class*="fixed top-0 right-0"][aria-hidden="false"]) a[aria-label="Contato via WhatsApp"] {
+    position: fixed !important;
+    bottom: 1.5rem !important;
+    z-index: 10002 !important;
+    width: 3rem !important;
+    height: 3rem !important;
+    margin: 0 !important;
+  }
+
+  body:has(header > div[class*="fixed top-0 right-0"][aria-hidden="false"]) a[aria-label="Abrir Instagram @anakfilms_"] {
+    right: 5.25rem !important;
+  }
+
+  body:has(header > div[class*="fixed top-0 right-0"][aria-hidden="false"]) a[aria-label="Contato via WhatsApp"] {
+    right: 1.5rem !important;
+  }
+
+  body:has(header > div[class*="fixed top-0 right-0"][aria-hidden="false"]) a[aria-label="Abrir Instagram @anakfilms_"] img {
+    border-radius: 0.85rem !important;
   }
 }
