@@ -110,16 +110,93 @@
   border-color: #0a0a0a;
 }
 
-/* Tablet e celular: remover completamente o menu hamburger e o drawer.
-   A navegação desktop continua disponível a partir de 1024px. */
+/*
+ * Menu responsivo clean para tablet e celular.
+ * O menu desktop continua a partir de 1024px.
+ * Em telas menores, o botão usa apenas o ícone de três barras.
+ * Ao abrir, o drawer entra suavemente da direita para a esquerda.
+ */
 @media (max-width: 1023px) {
+  /* Botão hamburger/X sempre fica acessível acima do drawer. */
   header > div > div > button[aria-label="Abrir menu"],
   header > div > div > button[aria-label="Fechar menu"] {
-    display: none !important;
+    display: flex !important;
+    position: fixed !important;
+    top: 1rem !important;
+    right: 1.25rem !important;
+    z-index: 80 !important;
+    width: 44px !important;
+    height: 44px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: #fff !important;
+    box-shadow: none !important;
+    cursor: pointer !important;
+    transition: opacity 0.25s ease, transform 0.25s ease !important;
   }
 
-  header > button[aria-label="Fechar menu"],
+  header > div > div > button[aria-label="Abrir menu"]:hover,
+  header > div > div > button[aria-label="Fechar menu"]:hover {
+    opacity: 0.7 !important;
+  }
+
+  header > div > div > button[aria-label="Abrir menu"]:focus-visible,
+  header > div > div > button[aria-label="Fechar menu"]:focus-visible {
+    outline: 1px solid rgba(255, 255, 255, 0.65) !important;
+    outline-offset: 3px !important;
+  }
+
+  /* Overlay escuro e discreto atrás do painel. */
+  header > button[aria-label="Fechar menu"] {
+    display: block !important;
+    z-index: 65 !important;
+    border: 0 !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+  }
+
+  /* Painel lateral clean: sem cantos excessivamente arredondados. */
   header > div[class*="fixed top-0 right-0"] {
-    display: none !important;
+    display: block !important;
+    z-index: 70 !important;
+    width: min(86vw, 360px) !important;
+    background: #0a0a0a !important;
+    border-left: 1px solid #222 !important;
+    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  /* Espaço superior para o X e navegação limpa. */
+  header > div[class*="fixed top-0 right-0"] nav {
+    padding-top: 5.5rem !important;
+    gap: 0 !important;
+  }
+
+  header > div[class*="fixed top-0 right-0"] nav button {
+    width: 100% !important;
+    padding: 0.9rem 0 !important;
+    border: 0 !important;
+    border-bottom: 1px solid #1d1d1d !important;
+    color: #d0d0d0 !important;
+    background: transparent !important;
+    text-align: left !important;
+    border-radius: 0 !important;
+    transition: color 0.25s ease, padding-left 0.25s ease !important;
+  }
+
+  header > div[class*="fixed top-0 right-0"] nav button:hover {
+    color: #fff !important;
+    padding-left: 0.35rem !important;
+  }
+
+  header > div[class*="fixed top-0 right-0"] nav a {
+    margin-top: 1.5rem !important;
+    padding: 0.9rem 0 !important;
+    border-color: #444 !important;
+    border-radius: 0 !important;
+    text-align: center !important;
   }
 }
