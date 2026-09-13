@@ -117,6 +117,22 @@
  * Ao abrir, o drawer entra suavemente da direita para a esquerda.
  */
 @media (max-width: 1023px) {
+  /*
+   * O header usa backdrop-blur-md quando a página está rolada.
+   * Como o menu lateral é position: fixed e vive dentro do header,
+   * esse blur pode transformar o header no containing block do menu,
+   * fazendo o painel ficar preso somente à altura do cabeçalho.
+   * No mobile/tablet o efeito de blur não é necessário: removê-lo
+   * garante que o menu continue relativo à viewport em qualquer scroll.
+   */
+  header {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    transform: none !important;
+    filter: none !important;
+    overflow: visible !important;
+  }
+
   /* Botão hamburger/X sempre fica acessível acima do drawer. */
   header > div > div > button[aria-label="Abrir menu"],
   header > div > div > button[aria-label="Fechar menu"] {
@@ -124,7 +140,7 @@
     position: fixed !important;
     top: 1rem !important;
     right: 1.25rem !important;
-    z-index: 80 !important;
+    z-index: 10002 !important;
     width: 44px !important;
     height: 44px !important;
     align-items: center !important;
@@ -153,26 +169,45 @@
   /* Overlay escuro e discreto atrás do painel. */
   header > button[aria-label="Fechar menu"] {
     display: block !important;
-    z-index: 65 !important;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 10000 !important;
     border: 0 !important;
     padding: 0 !important;
     cursor: pointer !important;
   }
 
-  /* Painel lateral clean: sem cantos excessivamente arredondados. */
+  /*
+   * Painel lateral realmente preso à viewport.
+   * inset + 100dvh evitam que o menu dependa da altura do header
+   * ou da posição atual da página.
+   */
   header > div[class*="fixed top-0 right-0"] {
     display: block !important;
-    z-index: 70 !important;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    height: 100dvh !important;
+    min-height: 100vh !important;
+    z-index: 10001 !important;
     width: min(86vw, 360px) !important;
+    max-width: 100vw !important;
     background: #0a0a0a !important;
     border-left: 1px solid #222 !important;
     box-shadow: -20px 0 60px rgba(0, 0, 0, 0.3) !important;
+    overflow: hidden !important;
   }
 
   /* Espaço superior para o X e navegação limpa. */
   header > div[class*="fixed top-0 right-0"] nav {
-    padding-top: 5.5rem !important;
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    padding: 5.5rem 1.5rem 2rem !important;
     gap: 0 !important;
+    overflow-y: auto !important;
+    overscroll-behavior: contain !important;
   }
 
   header > div[class*="fixed top-0 right-0"] nav button {
