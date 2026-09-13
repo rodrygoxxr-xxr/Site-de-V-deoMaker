@@ -4,20 +4,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
- */
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -130,124 +116,53 @@
 }
 
 @layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
-  body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-  }
+  * { border-color: var(--color-border); }
+  body { background-color: var(--color-background); color: var(--color-foreground); }
 }
 
-/* Animação de bounce para o WhatsApp */
 @keyframes gentle-bounce {
-  0%, 100% {
-    transform: translateY(0) scale(1);
-  }
-  50% {
-    transform: translateY(-8px) scale(1.05);
-  }
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.05); }
 }
+.whatsapp-bounce { animation: gentle-bounce 2s ease-in-out infinite; }
+.whatsapp-bounce:hover { animation: none; }
 
-.whatsapp-bounce {
-  animation: gentle-bounce 2s ease-in-out infinite;
-}
+button, a { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
-.whatsapp-bounce:hover {
-  animation: none;
-}
-
-/* Transições globais */
-button, a {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Fade in animation */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+.animate-fadeIn { animation: fadeIn 0.6s ease-out forwards; }
 
-.animate-fadeIn {
-  animation: fadeIn 0.6s ease-out forwards;
-}
-
-/* Card hover effects */
 .card-hover {
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              border-color 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
 }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
 
-.card-hover:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-}
-
-/* Button scale animation */
 .btn-scale {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              background-color 0.3s ease,
-              border-color 0.3s ease,
-              color 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
+.btn-scale:hover { transform: scale(1.02); }
+.btn-scale:active { transform: scale(0.98); }
 
-.btn-scale:hover {
-  transform: scale(1.02);
-}
+.service-card { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.service-card:hover { background-color: #0f0f0f; transform: translateX(8px); }
 
-.btn-scale:active {
-  transform: scale(0.98);
-}
+.portfolio-item { transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.portfolio-item:hover { transform: scale(1.02); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4); z-index: 10; }
 
-/* Service card animation */
-.service-card {
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.service-card:hover {
-  background-color: #0f0f0f;
-  transform: translateX(8px);
-}
-
-/* Portfolio item animation */
-.portfolio-item {
-  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.portfolio-item:hover {
-  transform: scale(1.02);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
-  z-index: 10;
-}
-
-/* Scroll indicator animation */
 @keyframes scrollPulse {
-  0%, 100% {
-    opacity: 0.5;
-    transform: translateY(0);
-  }
-  50% {
-    opacity: 1;
-    transform: translateY(6px);
-  }
+  0%, 100% { opacity: 0.5; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(6px); }
 }
+.scroll-indicator { animation: scrollPulse 2s ease-in-out infinite; }
 
-.scroll-indicator {
-  animation: scrollPulse 2s ease-in-out infinite;
-}
+a[aria-label="Abrir Instagram @anakfilms_"] { border-radius: 9999px !important; }
 
-/* Botão flutuante do Instagram: mesmo formato circular do WhatsApp */
-a[aria-label="Abrir Instagram @anakfilms_"] {
-  border-radius: 9999px !important;
+/* Imagem exata enviada pelo usuário no botão flutuante do Instagram */
+a[aria-label="Abrir Instagram @anakfilms_"] img {
+  content: url("data:image/webp;base64,UklGRlwLAABXRUJQVlA4IFALAACwMgCdASpwAHAAPj0YikOiIaEViH78IAPEtgQ4ALklHj/3tP2n/oB8ndMfq338/p3/o/zPTXl69hvE/9k/IXtb+YB+lf+i/rHYt8wn69/8f+9e6n+QHu6/uvqAf1X+zdZP6Ev7JemZ+4Hwaftz+0nwH/sD/4usAzuv8fy9Z9z+181PB3gBewf8b58kNtwF1S8cHbS8btQA/OX/M9OX/l/zPnx+iP/J/nvgK/mn9o/6X5ld7f0av3AcQsOSO3oIozWqqI1SlNri27a6Stm2LaCaIEGZ4dw35RDvXsNDnD4e5nSueXsq/gKI9iIXxgxp0nivUDDinzVLtT1/HuiPPDYnnv371Z02JCjXd9zrX7oWgoiuF6t0+qkbHcVE6JbTaYdFWEBaWnQBNSVwzzmMbioFdw9y1G5pyz6z5dsIiDX07jy3DHnBUySH9fT4ptJwp6xAvxM+sI38JPYl5Yhc2mtCbOg15aK7bBWneKQ7oBpdrx1tmBwhFi8qFmcG/drv13Kb8cUncNX2+doWGMo7GeN0Ap2/YI/mdcj7Kx7MUAAA/v/+tZmUsgQm0tr0lBhvra2v/Dzyva69bxfxaVr35E2m8He7zvh8/lQ/yqs85d4+rgShOuTX4d4N5B1Z8EJdW5c3LD9Tc/2Y3LVKvoz3NUQUpI5dSVNUc8mnWHoiveHzB0zpIfHWzrrHPjJ7EnEsZf/MS3D5ENoSeGY8mhlM8SwrBbLISCqPvqrS79dr+aeSWDbxbqKQCM9GVc1P8ggVg1yXkZ4+LrZ/MxP5TpSwcysvikkRpPBX16ykL8cYgujqsu9qyJWBcpLFpD449ANnqL3gXj7eOzv8g29/uzyGQ6Rz2XSbP5KL/6UIS/4YraVOD/NuP+PbcXBKSkwTt64uKeGOx/eaTKP8vfj7fFkE7M3dAoG2OdRdHQq+Xkbm5Jk92OgNX1pp16F2G9l4MtdUsdrm1O7Qqg2USXSLXfGPAdGsZl/cUoarrtepcYwt1vD8DT9UyepIOMBV4660IiQyJ10uNLZww/AbDezDubCa1/1i+e48Rfx1he56q8ujaEfKAUIzQ/TjQeM487z/duepcCXU32cFvxR7LQ5xHzaj5r11jrzPc8N6jXo8wjBghkep/s6kPtB15WuS+4jpZYUiqd/1YwFrLkO1padjRb/mU3HTXOR4CNb0Cr5SYr+9mKboPJna6O3ELkb+oOvCwg8J6E7y1PJdQ4kD1Wf6BDvsnHed5NuODRTjSRfiaGdB+tNjlRGiJpw8x5spAlm1M/5b6TV8T4JB8JN+pTKD2cUUhojtD4q5mAdAzUpyCvsGSATl6dkgWt+njqR0K8tWGZbb3Hobj0GhhP/Lv4X+XqyEZs5mSlWDq8qfYWjnr7QPBR5rYYgPDP+QQcgyHZI24Mz+RAnPCToQlGjuvOrvy89SG3NJ6zPbF+Rrfping+/V+1SsEnv4KTuVVfr74L5BmN+/zZtlKf/GL9hr30A9yNk1QLF7xb5b8k4JJfebM1iqsfF/xj6JQS26FAGpM6kx109kYMTzwSPcymIvuZxYr0evmEMcpRbcvydWlIiKvgv5jhekJe8oPA+/ZpLNES8Z3JqkUYrXu2N6x8AeH/6364peCiSpBSkvyEB9m+KQNHzKOFPdUFSlc8qpMdoe2TFiSBnBoqE7lLTSXigyNTGhleOmx8E1E6QcEP4mmTWc9L+8YZVrfmgze940c20shKl0zIBU2WkXGcrSrSUNfBq59J+ZMB/Ds7zuM2MgEzDVhW6zvV3HX7sGa3f9LObLDZfmPnqf0YzekYEUesvn4qsy/yDT06EPB5yKyMpCY331xSRHLXKoXtq9445PO9EfK/2cjp//LiY9/bzNC6ja8+FbuD0tbgHVi+d4KlIR6V9mL3QRdHv6DRpmE+hcgSc9uDAIm0MQPsOB/m3helkRK+7b2B1gvVb1haXBhoxkZ9em+7sYroazk6VgWpSJy4lk7RjyjXhDSQt3cdLPM44LIzD+P6SGso6uWQ+jHI/tswK9JOVIjYR7DwrzEagsFpRik3vX9wBvmD3ytxqKSaSeM21yc/oBsYInVHv+BbS/O06mKKDL594zlI+XlZBwVVG+bl1mfbGp+pJOeryYPk90lr4s3XWa+1fVx69jh9594gXvkKWiefhRFII01yqMJpG9LYyxzNUxI96xwiIli/keNWH7yPR1jf1UxCO9Ma7J1/p65gQlub6auq7pYWfK/gGZix7IsxMfPYgAtahoDimxNAocZfi6NJ4idu3Vbxxll8+cD7Q3Q7MpHDZmQeTn0gayYbQIbK/3rr6n0kMC99ikwQSQtNiFEiN7SDzydpWRoQVs1x/umQFP7HwgvlwqoPRf00ifr7sZzd7j9VR4sqsLYciMfBwQxoiYkvF2lCKeTjkW0wXkLvZVA/93NfILkvXmqNof5y0aXjE4Q2W9/IFtk7A28k+13UrX5JB+InWGw0vYjbE/ZGulWuu94xhZJ0SnsKIosSY4NNsG67YglphPD1ykBSKrEtFqiWaREgeb8nRCllVx/GMjH9kzTPY+aLQ505k3dlUzFLl8cLuLtz/m3h2LhltXyFHlqYQOCML00JXlHR2GDmx1mvg0yqHf0h0jXm8nBv8Xr1D4nSpZvYajK9HRbtBz9I22E/qQYagvXuWQAU6dqOgSAJcpP5G11F9aJwSH/PlA/In7eKpAOxvAGjAQu/PeX/yw2ioYS8dNgQuMVcXvemeLzZ6kzXDeR8U1ndvKA8D/2yXJ38uJRNBII1X6Q+l+pI5dgsMTh5u+Sf+t1VmD3YhyyaoZvsAbh+7P/h9hP1NJMwNvVVvlSBXP8YbCTZjeYrpV1Rc1KTd7FsCdItTtcUF/cTSuHKbe7oecM/H0PrqSa+XvreV9Ad3OsgIPywVqq6yCATFPGr1bUMUTtOWviGbl2fGaeGmy3ziHDYg96uhzJ+yHT0yXpX8H3PCAlNziB/1lF1Ayx5ug14TTvIRweBDv8Q2Sbz9G5FjQSUoMoTc6PmnXOAGanRTuidV3RARAIqnquH2q566DXZ5Rfo3ahpq7Y+PgiF3AQb89/AomKq5zwXlHDmXgjS/zCjFXHg7T8K36ym3A0UTm+IRVTZE2N/2Jibs39EnW2XCbaDD9vFPwi8YVfWwsfHWwjcYXzukPoHgchBDxEWR9ySXyFUdXOvu8cjv11PvnO8K1hOb1Y1dlD/9Q57A0Zz0REY8/terI4JSeN+BmunpxItMHGd5NhHHu3QHBBVBQdWR6M3TBL8Wh/dnHAdtNwCQ3OZVr5wrATLYMhlfVF/xR01Nr2b8rH9BTD8W2462gUw/lUD7xFueFRdDqcmZCf88e6Y2FkVGLZKtU9a00adSkLgsqIIG5yP73TBWtH20hJ35xAALM1TgvY6KC1JFfyDYhAH+ZsYJ4FfDw4BBI1vYGrALqA1R2dH/ztYMuk4ygs2plGtmMoKl4nhBybwVpJo5dtL6yDkKVYv+WQ8n64h6RGKddSdhfx1uAG3q0z9MBBqEKzymvO/8Xkbm/Nwa4wPXrUyaLULUKM8OjJLg59JuvEfQ0HP1JCGL0px9hTvNZ6mwD2FxWYpnvaIMrIWvFWCyOiB6cXgbs2ag9kxBrpW4U6FJNnS5Av7l5wGncS51xQQZQs1clgRpIsX5Q/LnRjWHLhq6hPyeCR9xCExAgqDcU87Q5reKUborOm7Eaqsdt7WbpBhb+/MhKH0vRZSJbBXkKR1G0CeLZbduz7f2pX9ofPci+JbUeNUlSbUULsUIhc8Bww1SDtaTplZA3wCYWVTgaQvcz0pVY9UWFojR/j3ILk0sKy72stPg7iz3b6hK2uSTC0tlFezwaGLnzCjtJ7B8arr6oTgqsAAAA");
 }
 
 /* Menu mobile/tablet: trava a página enquanto o drawer estiver aberto */
@@ -258,7 +173,6 @@ a[aria-label="Abrir Instagram @anakfilms_"] {
     touch-action: none;
   }
 
-  /* O X de fechar permanece visível por cima do drawer e usa o mesmo botão que abre o menu. */
   button[aria-label="Fechar menu"] {
     position: fixed;
     top: 1.25rem;
@@ -267,7 +181,5 @@ a[aria-label="Abrir Instagram @anakfilms_"] {
     color: #ccc;
   }
 
-  button[aria-label="Fechar menu"]:hover {
-    color: #faf9f7;
-  }
+  button[aria-label="Fechar menu"]:hover { color: #faf9f7; }
 }
