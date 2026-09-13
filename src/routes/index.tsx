@@ -164,20 +164,32 @@ function Index() {
             <button
               className="lg:hidden p-2"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={mobileMenuOpen}
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
-        <div
-          className={`lg:hidden absolute top-20 left-0 right-0 bg-[#0a0a0a] border-b border-[#1a1a1a] transition-all duration-300 ${
-            mobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
+        {/* Mobile Overlay */}
+        <button
+          type="button"
+          aria-label="Fechar menu"
+          onClick={() => setMobileMenuOpen(false)}
+          className={`lg:hidden fixed inset-0 z-[55] bg-black/60 backdrop-blur-[2px] transition-opacity duration-300 ${
+            mobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
           }`}
+        />
+
+        {/* Mobile Menu Drawer */}
+        <div
+          className={`lg:hidden fixed top-0 right-0 bottom-0 z-[60] w-[min(85vw,360px)] bg-[#0a0a0a] border-l border-[#1a1a1a] shadow-2xl transform transition-transform duration-300 ease-out ${
+            mobileMenuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
+          aria-hidden={!mobileMenuOpen}
         >
-          <nav className="flex flex-col p-6 gap-6">
+          <nav className="flex h-full flex-col p-6 pt-24 gap-6 overflow-y-auto">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -302,7 +314,7 @@ function Index() {
               O que eu faço
             </h2>
           </div>
-                        <div className="grid md:grid-cols-2 gap-px bg-[#1a1a1a]">
+          <div className="grid md:grid-cols-2 gap-px bg-[#1a1a1a]">
             {services.map((service, index) => (
               <div
                 key={index}
