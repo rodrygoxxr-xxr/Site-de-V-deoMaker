@@ -8,9 +8,9 @@
   background: #000 !important;
 }
 
-/* Foto de Ana Karoline como fundo do hero, atrás de todo o conteúdo textual. */
+/* Foto real de Ana Karoline como fundo do hero, atrás dos textos. */
 #hero {
-  background-image: url("data:image/jpeg;base64,'''REPLACE''' ") !important;
+  background-image: url("/ana-karoline-hero.jpg") !important;
   background-size: cover !important;
   background-position: center center !important;
   background-repeat: no-repeat !important;
@@ -21,7 +21,7 @@
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.48) 48%, rgba(0, 0, 0, 0.66) 100%) !important;
 }
 
-/* Remove o placeholder visual do fundo para manter a abertura limpa e minimalista. */
+/* Remove o placeholder visual do fundo. */
 #hero > div:nth-child(2) {
   display: none !important;
 }
@@ -39,7 +39,6 @@
   color: #0a0a0a !important;
 }
 
-/* Ajusta automaticamente a tipografia das seções claras. */
 #sobre h1,
 #sobre h2,
 #sobre h3,
@@ -76,7 +75,6 @@
   color: #666 !important;
 }
 
-/* Cards e divisórias ficam claros e discretos nas seções brancas. */
 #sobre [class*="bg-[#111]"],
 #portfolio [class*="bg-[#111]"],
 #contato [class*="bg-[#111]"] {
@@ -89,7 +87,6 @@
   border-color: #e2e2e2 !important;
 }
 
-/* CTAs nas áreas claras usam preto com texto branco para manter contraste. */
 #sobre [class*="bg-[#faf9f7]"],
 #portfolio [class*="bg-[#faf9f7]"],
 #contato [class*="bg-[#faf9f7]"] {
@@ -97,7 +94,6 @@
   color: #fff !important;
 }
 
-/* Inputs e campos de formulário nas áreas claras. */
 #contato input,
 #contato textarea {
   background: #f7f7f7 !important;
@@ -110,7 +106,6 @@
   color: #777 !important;
 }
 
-/* Mantém links e elementos interativos legíveis sobre branco. */
 #sobre a,
 #portfolio a,
 #contato a {
