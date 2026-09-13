@@ -8,6 +8,19 @@
   background: #000 !important;
 }
 
+/* Foto de Ana Karoline como fundo do hero, atrás de todo o conteúdo textual. */
+#hero {
+  background-image: url("data:image/jpeg;base64,'''REPLACE''' ") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Overlay escuro preserva a leitura dos textos sobre a fotografia. */
+#hero > div:first-child {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.48) 48%, rgba(0, 0, 0, 0.66) 100%) !important;
+}
+
 /* Remove o placeholder visual do fundo para manter a abertura limpa e minimalista. */
 #hero > div:nth-child(2) {
   display: none !important;
@@ -110,21 +123,8 @@
   border-color: #0a0a0a;
 }
 
-/*
- * Menu responsivo clean para tablet e celular.
- * O menu desktop continua a partir de 1024px.
- * Em telas menores, o botão usa apenas o ícone de três barras.
- * Ao abrir, o drawer entra suavemente da direita para a esquerda.
- */
+/* Menu responsivo clean para tablet e celular. */
 @media (max-width: 1023px) {
-  /*
-   * O header usa backdrop-blur-md quando a página está rolada.
-   * Como o menu lateral é position: fixed e vive dentro do header,
-   * esse blur pode transformar o header no containing block do menu,
-   * fazendo o painel ficar preso somente à altura do cabeçalho.
-   * No mobile/tablet o efeito de blur não é necessário: removê-lo
-   * garante que o menu continue relativo à viewport em qualquer scroll.
-   */
   header {
     -webkit-backdrop-filter: none !important;
     backdrop-filter: none !important;
@@ -133,7 +133,6 @@
     overflow: visible !important;
   }
 
-  /* Botão hamburger/X sempre fica acessível acima do drawer. */
   header > div > div > button[aria-label="Abrir menu"],
   header > div > div > button[aria-label="Fechar menu"] {
     display: flex !important;
@@ -166,7 +165,6 @@
     outline-offset: 3px !important;
   }
 
-  /* Overlay escuro e discreto atrás do painel. */
   header > button[aria-label="Fechar menu"] {
     display: block !important;
     position: fixed !important;
@@ -177,11 +175,6 @@
     cursor: pointer !important;
   }
 
-  /*
-   * Painel lateral realmente preso à viewport.
-   * inset + 100dvh evitam que o menu dependa da altura do header
-   * ou da posição atual da página.
-   */
   header > div[class*="fixed top-0 right-0"] {
     display: block !important;
     position: fixed !important;
@@ -199,7 +192,6 @@
     overflow: hidden !important;
   }
 
-  /* Espaço superior para o X e navegação limpa. */
   header > div[class*="fixed top-0 right-0"] nav {
     width: 100% !important;
     height: 100% !important;
