@@ -14,33 +14,44 @@ const mobileMenuStabilityFix = {
 
     if (normalizedId.endsWith("/src/routes/index.tsx")) {
       return code
-        // A backdrop-filter on the fixed header creates a containing block for the
-        // fixed mobile drawer, which makes the drawer inherit the header's bounds
-        // after scrolling. Keep the header solid so the drawer remains viewport-fixed.
+        // The mobile/tablet navigation must never inherit a backdrop filter from the header.
+        // backdrop-filter can create a containing block and break fixed positioning after scroll.
+        .replace(/backdrop-blur-md/g, "")
+        .replace(/backdrop-blur-\[2px\]/g, "")
+        // Keep the overlay as a plain, full-viewport dark layer: no blur and no geometry dependency.
         .replace(
-          "bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#1a1a1a]",
-          "bg-[#0a0a0a] border-b border-[#1a1a1a]"
+          "fixed inset-0 z-[55] z-[55] bg-black/60",
+          "fixed inset-0 z-[55] bg-black/60"
         )
-        // The menu overlay must darken the page without applying any blur.
-        .replace("bg-black/60 backdrop-blur-[2px]", "bg-black/60")
-        // Make the drawer explicitly viewport-height based on mobile browsers' dynamic viewport.
         .replace(
-          "fixed top-0 right-0 bottom-0 z-[60]",
-          "fixed inset-y-0 right-0 z-[60] h-[100dvh] max-h-[100dvh]"
+          "fixed inset-0 z-[55] bg-black/60",
+          "fixed inset-0 z-[55] bg-black/60"
+        )
+        // Rebuild the drawer geometry so it is always a complete viewport-height panel,
+        // regardless of the user's current scroll position.
+        .replace(
+          "fixed top-0 right-0 bottom-0 z-[60] w-[min(85vw,360px)]",
+          "fixed inset-y-0 right-0 z-[60] h-[100dvh] max-h-[100dvh] w-[min(85vw,360px)]"
         );
     }
 
     if (normalizedId.endsWith("/src/styles.css")) {
-      // The previous generic selector also matched the full-screen overlay button.
-      // Scope the X-button styles to the actual header toggle so the overlay keeps
-      // its inset-0 geometry and remains clickable outside the drawer.
-      return code.replace(
-        'button[aria-label="Fechar menu"] {',
-        'header > div button[aria-label="Fechar menu"] {'
-      ).replace(
-        'button[aria-label="Fechar menu"]:hover',
-        'header > div button[aria-label="Fechar menu"]:hover'
-      );
+      // Scope the X-button styles to the actual header toggle. The full-screen overlay
+      // also has aria-label="Fechar menu" and must keep its inset-0 geometry.
+      return code
+        .replace(
+          'button[aria-label="Fechar menu"] {',
+          'header > div button[aria-label="Fechar menu"] {'
+        )
+        .replace(
+          'button[aria-label="Fechar menu"]:hover',
+          'header > div button[aria-label="Fechar menu"]:hover'
+        )
+        // Hard-disable every backdrop filter used by the mobile/tablet menu layer.
+        .replace(
+          '/* Menu mobile/tablet: trava a página enquanto o drawer estiver aberto */',
+          '/* Menu mobile/tablet: trava a página enquanto o drawer estiver aberto */\n@media (max-width: 1023px) {\n  header, header * {\n    backdrop-filter: none !important;\n    -webkit-backdrop-filter: none !important;\n  }\n}\n'
+        );
     }
 
     return null;
